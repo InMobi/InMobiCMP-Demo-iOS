@@ -181,7 +181,12 @@ The startChoice method sets up and starts the InMobi CMP with the defined colors
 }
 ```
 
-  
+- Get the InMobiCMP SDK Version
+```swift
+var inMobiCMPVersion: String {
+    ChoiceCmp.shared.sdkVersion
+}
+```
 
 - Delegates
 
@@ -191,10 +196,15 @@ Implement the necessary delegate methods to handle consent responses:
 extension AppDelegate: ChoiceCmpDelegate, CCPADelegate, GoogleBasicConsentDelegate {
     func cmpDidLoad(info: InMobiCMP.PingResponse) {
         print(#function)
+        print("US Regulation Applies: \(info.usRegulationApplies)")
     }
 
-    func cmpDidShow(info: InMobiCMP.PingResponse) {
-        print(#function)
+    func cmpUIStatusChanged(info: DisplayInfo) {
+        print("\(#function), Display Status: \(info.displayStatus)")
+        print("\(#function), Display Message: \(info.displayMessage)")
+        print("\(#function), Regulation Shown: \(info.regulationShown)")
+        print("\(#function), GBC Shown : \(info.gbcShown)")
+
     }
 
     func didReceiveIABVendorConsent(gdprData: InMobiCMP.GDPRData, updated: Bool) {
