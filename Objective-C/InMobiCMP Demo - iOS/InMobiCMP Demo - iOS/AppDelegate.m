@@ -16,6 +16,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Get InMobiCMP SDK version
+    NSLog(@"InMobiCMP SDK Version: %@", [[ChoiceCmp shared] sdkVersion]);
     // Initialise InMobiCMP
     [self startChoice];
     
@@ -130,5 +132,10 @@
 - (void)userDidMoveToOtherState {
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
+
+- (void)cmpUIStatusChangedWithInfo:(DisplayInfo * _Nonnull)info { 
+    NSLog(@"%@", NSStringFromSelector(_cmd), info.gbcShown);
+}
+
 
 @end

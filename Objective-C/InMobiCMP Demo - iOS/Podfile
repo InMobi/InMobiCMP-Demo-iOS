@@ -4,6 +4,6 @@ target 'InMobiCMP Demo - iOS' do
   use_frameworks!
 
   # Pods for InMobiCMP Demo - iOS
-  pod 'InMobiCMP', '2.0.1'
+  pod 'InMobiCMP', '2.1.0'
 
 end

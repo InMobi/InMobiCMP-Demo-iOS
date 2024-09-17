@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Get InMobiCMP SDK Version
+        print("InMobiCMP SDK Version: \(ChoiceCmp.shared.sdkVersion)")
+        
         // Initalise InMobi CMP
         startChoice()
         
@@ -85,10 +88,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: ChoiceCmpDelegate, CCPADelegate, GoogleBasicConsentDelegate {
     func cmpDidLoad(info: InMobiCMP.PingResponse) {
-        print(#function)
+        print("\(#function), usRegulationApplies: \(info.usRegulationApplies)")
     }
     
-    func cmpDidShow(info: InMobiCMP.PingResponse) {
+    func cmpUIStatusChanged(info: InMobiCMP.DisplayInfo) {
         print(#function)
     }
     
