@@ -26,32 +26,46 @@
 
 
 - (void)startChoice {
-    ChoiceColor* defaultColors = [[ChoiceColor alloc] init];
-    defaultColors.dividerColor = @"#CCBBFF";
-    defaultColors.tabBackgroundColor = @"#BAABEA";
-    defaultColors.tabForegroundColor = @"#8844FF";
-    defaultColors.searchBarBackgroundColor = @"#CCBBFF";
-    defaultColors.searchBarForegroundColor = @"#BAABEA";
-    defaultColors.infoButtonForegroundColor = @"#8844FF";
-    defaultColors.infoScreenBackgroundColor = @"#CCBBFF";
-    defaultColors.infoScreenForegroundColor = @"#5533BB";
-    defaultColors.toggleActiveColor = @"#8844FF";
-    defaultColors.toggleInactiveColor = @"#CCBBFF";
-    defaultColors.globalTextColor = @"#5533BB";
-    defaultColors.globalBackgroundColor = @"#EEDDFF";
-    defaultColors.titleTextColor = @"#5533BB";
-    defaultColors.bodyTextColor = @"#5533BB";
-    defaultColors.listTextColor = @"#5533BB";
-    defaultColors.tabTextColor = @"#5533BB";
-    defaultColors.menuTextColor = @"#5533BB";
-    defaultColors.linkTextColor = @"#8844FF";
-    defaultColors.buttonTextColor = @"#BAABEA";
-    defaultColors.buttonDisabledTextColor = @"#8844FF";
-    defaultColors.buttonBackgroundColor = @"#8844FF";
-    defaultColors.buttonDisabledBackgroundColor = @"#CCBBFF";
+    ChoiceColor* darkColors = [[ChoiceColor alloc] init];
+        darkColors.dividerColor = @"#292929"; // Dark Gray
+        darkColors.tabBackgroundColor = @"#090909"; // Almost Black
+        darkColors.searchBarBackgroundColor = @"#121212"; // Deep Black
+        darkColors.searchBarForegroundColor = @"#5C5C5C"; // Muted Gray
+        darkColors.infoButtonForegroundColor = @"#FFDD33"; // Bright Yellow
+        darkColors.toggleActiveColor = @"#F70D80"; // Neon Pink
+        darkColors.toggleInactiveColor = @"#3A3A3A"; // Dark Gray
+        darkColors.globalBackgroundColor = @"#040404"; // Pure Black
+        darkColors.titleTextColor = @"#FFB700"; // Golden Yellow
+        darkColors.bodyTextColor = @"#AFAFAF"; // Light Gray
+        darkColors.tabTextColor = @"#FFFFFF"; // White
+        darkColors.menuTextColor = @"#FF8C00"; // Vibrant Orange
+        darkColors.linkTextColor = @"#08F7FE"; // Neon Blue
+        darkColors.buttonTextColor = @"#000000"; // Black
+        darkColors.buttonDisabledTextColor = @"#303030"; // Dark Gray
+        darkColors.buttonBackgroundColor = @"#F70D80"; // Neon Pink
+        darkColors.buttonDisabledBackgroundColor = @"#252525"; // Darker Gray
+
+        ChoiceColor *lightColors = [[ChoiceColor alloc] init];
+        lightColors.dividerColor = @"#807060"; // Brownish Gray
+        lightColors.tabBackgroundColor = @"#2F261B"; // Deep Brown
+        lightColors.searchBarBackgroundColor = @"#504030"; // Dark Sand
+        lightColors.searchBarForegroundColor = @"#AA9275"; // Muted Beige
+        lightColors.infoButtonForegroundColor = @"#D48F1A"; // Deep Gold
+        lightColors.toggleActiveColor = @"#D92B2B"; // Blood Red
+        lightColors.toggleInactiveColor = @"#85776A"; // Warm Gray
+        lightColors.globalBackgroundColor = @"#3E3225"; // Dark Tan
+        lightColors.titleTextColor = @"#F2B705"; // Bright Gold
+        lightColors.bodyTextColor = @"#E0B18A"; // Soft Orange
+        lightColors.tabTextColor = @"#F2E6D0"; // Creamy White
+        lightColors.menuTextColor = @"#F2A74B"; // Burnt Orange
+        lightColors.linkTextColor = @"#E65C3C"; // Fiery Red
+        lightColors.buttonTextColor = @"#140C07"; // Deep Brown
+        lightColors.buttonDisabledTextColor = @"#645548"; // Muted Brown
+        lightColors.buttonBackgroundColor = @"#C72C41"; // Crimson Red
+        lightColors.buttonDisabledBackgroundColor = @"#7D6957"; // Warm Gray
     
     // Use the ChoiceStyle class to set the light and dark themes
-    ChoiceStyle *style = [[ChoiceStyle alloc] initWithPreferredThemeMode: CMPUserInterfaceStyleAuto lightModeColors:defaultColors darkModeColors:defaultColors regularFont:NULL boldFont:NULL];
+    ChoiceStyle *style = [[ChoiceStyle alloc] initWithPreferredThemeMode: CMPUserInterfaceStyleAuto lightModeColors:lightColors darkModeColors:darkColors regularFont:NULL boldFont:NULL];
     
     // Initialise InMobi CMP
     [[ChoiceCmp shared] startChoiceWithPcode:@"GeHdnS-8pKsAD" delegate: self ccpaDelegate: self shouldDisplayIDFA:true style: style];
@@ -134,8 +148,12 @@
 }
 
 - (void)cmpUIStatusChangedWithInfo:(DisplayInfo * _Nonnull)info { 
-    NSLog(@"%@", NSStringFromSelector(_cmd), info.gbcShown);
+    NSLog(@"%@, gbcShown: %d", NSStringFromSelector(_cmd), info.gbcShown);
 }
 
+- (void)didReceiveActionButtonTapWithAction:(enum ActionButtons)action {
+    NSLog(@"%@, action button pressed: %ld", NSStringFromSelector(_cmd), action);
+
+}
 
 @end
