@@ -120,31 +120,27 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 The defaultColors property defines the color scheme used by the CMP:
 
 ```swift
-var defaultColors: ChoiceColor {
-    let choiceColor = ChoiceColor()
-    choiceColor.dividerColor = "#CCBBFF"
-    choiceColor.tabBackgroundColor = "#BAABEA"
-    choiceColor.tabForegroundColor = "#8844FF"
-    choiceColor.searchBarBackgroundColor = "#CCBBFF"
-    choiceColor.searchBarForegroundColor = "#BAABEA"
-    choiceColor.infoButtonForegroundColor = "#8844FF"
-    choiceColor.infoScreenBackgroundColor = "#CCBBFF"
-    choiceColor.infoScreenForegroundColor = "#5533BB"
-    choiceColor.toggleActiveColor = "#8844FF"
-    choiceColor.toggleInactiveColor = "#CCBBFF"
-    choiceColor.globalTextColor = "#5533BB"
-    choiceColor.globalBackgroundColor = "#EEDDFF"
-    choiceColor.titleTextColor = "#5533BB"
-    choiceColor.bodyTextColor = "#5533BB"
-    choiceColor.listTextColor = "#5533BB"
-    choiceColor.tabTextColor = "#5533BB"
-    choiceColor.menuTextColor = "#5533BB"
-    choiceColor.linkTextColor = "#8844FF"
-    choiceColor.buttonTextColor = "#BAABEA"
-    choiceColor.buttonDisabledTextColor = "#8844FF"
-    choiceColor.buttonBackgroundColor = "#8844FF"
-    choiceColor.buttonDisabledBackgroundColor = "#CCBBFF"
-    return choiceColor
+    var defaultColors : ChoiceColor {
+        let choiceColor = ChoiceColor()
+        choiceColor.dividerColor = "#CCBBFF"
+        choiceColor.tabBackgroundColor = "#BAABEA"
+        choiceColor.searchBarBackgroundColor = "#CCBBFF"
+        choiceColor.searchBarForegroundColor = "#BAABEA"
+        choiceColor.infoButtonForegroundColor = "#8844FF"
+        choiceColor.toggleActiveColor = "#8844FF"
+        choiceColor.toggleInactiveColor = "#CCBBFF"
+        choiceColor.globalBackgroundColor = "#EEDDFF"
+        choiceColor.titleTextColor = "#5533BB"
+        choiceColor.bodyTextColor = "#5533BB"
+        choiceColor.tabTextColor = "#5533BB"
+        choiceColor.menuTextColor = "#5533BB"
+        choiceColor.linkTextColor = "#8844FF"
+        choiceColor.buttonTextColor = "#BAABEA"
+        choiceColor.buttonDisabledTextColor = "#8844FF"
+        choiceColor.buttonBackgroundColor = "#8844FF"
+        choiceColor.buttonDisabledBackgroundColor = "#CCBBFF"
+        return choiceColor
+    }
 }
 
 ```
@@ -235,12 +231,16 @@ extension AppDelegate: ChoiceCmpDelegate, CCPADelegate, GoogleBasicConsentDelega
         print("Analytics storage value: \(consents.analyticsStorage)")
     }
 
-    func didReceiveUSRegulationsConsent(usRegData: USRegulationsData)     {
+    func didReceiveUSRegulationsConsent(usRegData: USRegulationsData) {
         print(#function)
     }
 
     func userDidMoveToOtherState() {
         print(#function)
+    }
+    
+    func didReceiveActionButtonTap(action: ActionButtons) {
+        print("\(#function) action button tapped: \(action)")
     }
 }
 ```

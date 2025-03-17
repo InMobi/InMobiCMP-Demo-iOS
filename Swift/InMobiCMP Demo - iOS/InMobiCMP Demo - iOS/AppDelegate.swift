@@ -10,30 +10,47 @@ import InMobiCMP
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var defaultColors : ChoiceColor {
+    var darkColors: ChoiceColor {
         let choiceColor = ChoiceColor()
-        choiceColor.dividerColor = "#CCBBFF"
-        choiceColor.tabBackgroundColor = "#BAABEA"
-        choiceColor.tabForegroundColor = "#8844FF"
-        choiceColor.searchBarBackgroundColor = "#CCBBFF"
-        choiceColor.searchBarForegroundColor = "#BAABEA"
-        choiceColor.infoButtonForegroundColor = "#8844FF"
-        choiceColor.infoScreenBackgroundColor = "#CCBBFF"
-        choiceColor.infoScreenForegroundColor = "#5533BB"
-        choiceColor.toggleActiveColor = "#8844FF"
-        choiceColor.toggleInactiveColor = "#CCBBFF"
-        choiceColor.globalTextColor = "#5533BB"
-        choiceColor.globalBackgroundColor = "#EEDDFF"
-        choiceColor.titleTextColor = "#5533BB"
-        choiceColor.bodyTextColor = "#5533BB"
-        choiceColor.listTextColor = "#5533BB"
-        choiceColor.tabTextColor = "#5533BB"
-        choiceColor.menuTextColor = "#5533BB"
-        choiceColor.linkTextColor = "#8844FF"
-        choiceColor.buttonTextColor = "#BAABEA"
-        choiceColor.buttonDisabledTextColor = "#8844FF"
-        choiceColor.buttonBackgroundColor = "#8844FF"
-        choiceColor.buttonDisabledBackgroundColor = "#CCBBFF"
+        choiceColor.dividerColor = "#292929" // Dark Gray
+        choiceColor.tabBackgroundColor = "#090909" // Almost Black
+        choiceColor.searchBarBackgroundColor = "#121212" // Deep Black
+        choiceColor.searchBarForegroundColor = "#5C5C5C" // Muted Gray
+        choiceColor.infoButtonForegroundColor = "#FFDD33" // Bright Yellow
+        choiceColor.toggleActiveColor = "#F70D80" // Neon Pink
+        choiceColor.toggleInactiveColor = "#3A3A3A" // Dark Gray
+        choiceColor.globalBackgroundColor = "#040404" // Pure Black
+        choiceColor.titleTextColor = "#FFB700" // Golden Yellow
+        choiceColor.bodyTextColor = "#AFAFAF" // Light Gray
+        choiceColor.tabTextColor = "#FFFFFF" // White
+        choiceColor.menuTextColor = "#FF8C00" // Vibrant Orange
+        choiceColor.linkTextColor = "#08F7FE" // Neon Blue
+        choiceColor.buttonTextColor = "#000000" // Black
+        choiceColor.buttonDisabledTextColor = "#303030" // Dark Gray
+        choiceColor.buttonBackgroundColor = "#F70D80" // Neon Pink
+        choiceColor.buttonDisabledBackgroundColor = "#252525" // Darker Gray
+        return choiceColor
+    }
+
+    var lightColors: ChoiceColor {
+        let choiceColor = ChoiceColor()
+        choiceColor.dividerColor = "#807060" // Brownish Gray
+        choiceColor.tabBackgroundColor = "#2F261B" // Deep Brown
+        choiceColor.searchBarBackgroundColor = "#504030" // Dark Sand
+        choiceColor.searchBarForegroundColor = "#AA9275" // Muted Beige
+        choiceColor.infoButtonForegroundColor = "#D48F1A" // Deep Gold
+        choiceColor.toggleActiveColor = "#D92B2B" // Blood Red
+        choiceColor.toggleInactiveColor = "#85776A" // Warm Gray
+        choiceColor.globalBackgroundColor = "#3E3225" // Dark Tan
+        choiceColor.titleTextColor = "#F2B705" // Bright Gold
+        choiceColor.bodyTextColor = "#E0B18A" // Soft Orange
+        choiceColor.tabTextColor = "#F2E6D0" // Creamy White
+        choiceColor.menuTextColor = "#F2A74B" // Burnt Orange
+        choiceColor.linkTextColor = "#E65C3C" // Fiery Red
+        choiceColor.buttonTextColor = "#140C07" // Deep Brown
+        choiceColor.buttonDisabledTextColor = "#645548" // Muted Brown
+        choiceColor.buttonBackgroundColor = "#C72C41" // Crimson Red
+        choiceColor.buttonDisabledBackgroundColor = "#7D6957" // Warm Gray
         return choiceColor
     }
     
@@ -60,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @objc func startChoice() {
         // Use the ChoiceStyle class to set the light and dark themes
-        let style = ChoiceStyle(preferredThemeMode: .auto, lightModeColors: defaultColors, darkModeColors: defaultColors)
+        let style = ChoiceStyle(preferredThemeMode: .auto, lightModeColors: lightColors, darkModeColors: darkColors)
         // Initialise InMobi CMP
         ChoiceCmp.shared.startChoice(pcode: "GeHdnS-8pKsAD", delegate: self, gbcDelegate: self, style: style)
         
@@ -129,5 +146,9 @@ extension AppDelegate: ChoiceCmpDelegate, CCPADelegate, GoogleBasicConsentDelega
     
     func userDidMoveToOtherState() {
         print(#function)
+    }
+    
+    func didReceiveActionButtonTap(action: ActionButtons) {
+        print("\(#function), action button tapped: \(action)")
     }
 }
